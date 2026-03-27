@@ -1,0 +1,7 @@
+Top 5 Countries by Revenue:
+Country
+United Kingdom    7381644.433
+EIRE               356041.860
+Netherlands        268784.350
+Germany            202025.391
+France             146107.070

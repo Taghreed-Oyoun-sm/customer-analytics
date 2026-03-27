@@ -1,0 +1,45 @@
+CUSTOMER SEGMENTATION USING K-MEANS CLUSTERING (RFM Analysis)
+======================================================================
+
+Number of clusters used: 5
+Total customers analyzed: 4312
+
+CLUSTER SUMMARY:
+--------------------------------------------------
+Cluster 0: Regular Customers
+   Number of Customers : 208
+   Avg Recency         : 16.77 days
+   Avg Frequency       : 21.76 orders
+   Avg Monetary Value  : $12,210.23
+--------------------------------------------------
+Cluster 1: Occasional / Low-Value Customers
+   Number of Customers : 3053
+   Avg Recency         : 44.7 days
+   Avg Frequency       : 3.77 orders
+   Avg Monetary Value  : $1,370.06
+--------------------------------------------------
+Cluster 2: Frequent High-Spenders
+   Number of Customers : 10
+   Avg Recency         : 3.7 days
+   Avg Frequency       : 118.1 orders
+   Avg Monetary Value  : $66,250.55
+--------------------------------------------------
+Cluster 3: VIP / Top-Tier Customers
+   Number of Customers : 3
+   Avg Recency         : 6.0 days
+   Avg Frequency       : 89.67 orders
+   Avg Monetary Value  : $264,703.53
+--------------------------------------------------
+Cluster 4: Churned / Inactive Customers
+   Number of Customers : 1038
+   Avg Recency         : 243.86 days
+   Avg Frequency       : 1.66 orders
+   Avg Monetary Value  : $596.43
+--------------------------------------------------
+
+Business Interpretation:
+- Cluster 3 (VIP)         : Highest spending customers - Priority for loyalty programs
+- Cluster 2 (Frequent)    : Very active buyers
+- Cluster 0 (Regular)     : Stable and reliable customer base
+- Cluster 1 (Occasional)  : Low engagement - Potential for upselling
+- Cluster 4 (Churned)     : Inactive customers - Win-back campaigns needed
