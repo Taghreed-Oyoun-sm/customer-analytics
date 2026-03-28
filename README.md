@@ -106,11 +106,11 @@ bash summary.sh
 ## Screenshots
 
 ### Terminal Output — Pipeline Running
-![Terminal Output 1](Screenshots/terminal_output1.png)
-![Terminal Output 2](Screenshots/terminal_output2.png)
+![Terminal Output 1](Screenshots/Terminal_output1.png)
+![Terminal Output 2](Screenshots/Terminal_output2.png)
 
 ### Results Folder on Host
-![Results Folder](Screenshots/results_folder.png)
+![Results Folder](Screenshots/Results_folder.png)
 
 ### summary_plot.png — Generated Visualizations
 ![Summary Plot](Screenshots/summary_plot.png)
