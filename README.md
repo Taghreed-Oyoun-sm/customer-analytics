@@ -6,6 +6,13 @@
 | Farah Awadalla | 231000006 |
 | Taghreed Oyoun | 231002478 |
 
+
+## Docker Image
+🚀 **View on Docker Hub:** [taghreedoyoun/customer-analytics](https://hub.docker.com/r/taghreedoyoun/customer-analytics)
+
+To pull the image directly:
+```bash
+docker pull taghreedoyoun/customer-analytics:latest
 ---
 
 ## Dataset
