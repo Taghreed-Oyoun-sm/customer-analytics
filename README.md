@@ -6,13 +6,16 @@
 | Farah Awadalla | 231000006 |
 | Taghreed Oyoun | 231002478 |
 
+---
 
 ## Docker Image
-🚀 **View on Docker Hub:** [taghreedoyoun/customer-analytics](https://hub.docker.com/r/taghreedoyoun/customer-analytics)
+🐳 **View on Docker Hub:** [taghreedoyoun/customer-analytics](https://hub.docker.com/r/taghreedoyoun/customer-analytics)
 
 To pull the image directly:
 ```bash
 docker pull taghreedoyoun/customer-analytics:latest
+```
+
 ---
 
 ## Dataset
@@ -42,7 +45,7 @@ docker pull taghreedoyoun/customer-analytics:latest
   - Horizontal bar chart of top 10 countries by number of transactions
   - Correlation heatmap of numeric features
 - **cluster.py** — Applies K-Means clustering (k=5) using RFM (Recency, Frequency, Monetary) features, labels each cluster, and saves results to `clusters.txt`
-- **summary.sh** — Copies all output files (`.csv`, `.txt`, `.png`) from the container to `results/` on the host, then stops and removes the container
+- **summary.sh** — Builds the Docker image, runs the full pipeline inside the container, copies all outputs to `results/` on the host, then stops and removes the container
 
 ---
 
@@ -57,6 +60,11 @@ customer-analytics/
 ├── cluster.py
 ├── summary.sh
 ├── README.md
+├── Screenshots/
+│   ├── terminal_output1.png
+│   ├── terminal_output2.png
+│   ├── results_folder.png
+│   └── summary_plot.png
 └── results/
     ├── data_raw.csv
     ├── data_preprocessed.csv
@@ -149,6 +157,9 @@ Most Frequent Purchase Day: Thursday
 ```
 
 ### clusters.txt
+
+> **Note on cluster selection:** Although the Elbow Method suggested k=2 as the optimal number of clusters, the resulting segmentation was not meaningful, as it mainly separated a small group of extreme high-value customers from the rest. To obtain more interpretable and actionable customer segments, a higher number of clusters (k=5) was selected. This allowed better differentiation between customer behaviors such as regular, occasional, high-value, and churned customers.
+
 ```
 CUSTOMER SEGMENTATION USING K-MEANS CLUSTERING (RFM Analysis)
 ======================================================================
