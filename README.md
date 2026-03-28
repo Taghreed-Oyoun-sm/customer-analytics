@@ -78,27 +78,42 @@ Each script automatically calls the next one using `subprocess.call()`.
 
 ## Docker Build & Run Commands
 
-### 1. Build the Docker image
+### Option A — Run everything with one command (recommended)
+```bash
+bash summary.sh
+```
+This automatically builds the image, runs the full pipeline inside the container, copies all results to `results/`, and removes the container.
+
+### Option B — Run manually step by step
+
+**1. Build the Docker image**
 ```bash
 docker build -t customer-analytics .
 ```
 
-### 2. Run the container (interactive)
+**2. Run the container and execute the pipeline**
 ```bash
-docker run -it --name analytics-container customer-analytics
+docker run --name analytics-container customer-analytics python ingest.py
 ```
 
-### 3. Inside the container — run the full pipeline
+**3. Copy results to host and clean up**
 ```bash
-python ingest.py
+bash summary.sh
 ```
 
-### 4. Open a new terminal on the host — copy results and clean up
-```bash
-bash summary.sh analytics-container
-```
+---
 
-> This copies all outputs to `results/` on your host machine, then stops and removes the container.
+## Screenshots
+
+### Terminal Output — Pipeline Running
+![Terminal Output 1](Screenshots/terminal_output1.png)
+![Terminal Output 2](Screenshots/terminal_output2.png)
+
+### Results Folder on Host
+![Results Folder](Screenshots/results_folder.png)
+
+### summary_plot.png — Generated Visualizations
+![Summary Plot](Screenshots/summary_plot.png)
 
 ---
 
@@ -106,35 +121,60 @@ bash summary.sh analytics-container
 
 ### insight1.txt
 ```
-Total Revenue: $xxxxxx.xx
-Total Unique Customers: xxxx
+Total Revenue: $8,798,233.74
+Total Unique Customers: 4312
 ```
 
 ### insight2.txt
 ```
 Top 5 Countries by Revenue:
-United Kingdom    xxxxxxxxx.xx
-Netherlands        xxxxxxxxx.xx
-...
+United Kingdom    7,381,644.43
+EIRE                356,041.86
+Netherlands         268,784.35
+Germany             202,025.39
+France              146,107.07
 ```
 
 ### insight3.txt
 ```
-Average Order Value: $xxx.xx
+Average Order Value: $457.93
 Most Frequent Purchase Day: Thursday
 ```
 
-### clusters.txt (excerpt)
+### clusters.txt
 ```
 CUSTOMER SEGMENTATION USING K-MEANS CLUSTERING (RFM Analysis)
 ======================================================================
-Cluster 0: Regular Customers
-   Number of Customers : xxx
-   Avg Recency         : xx days
-   Avg Frequency       : x orders
-   Avg Monetary Value  : $xxx.xx
-...
-```
+Number of clusters used: 5
+Total customers analyzed: 4312
 
-### summary_plot.png
-Three plots: transaction amount distribution, top 10 countries by transactions, and a correlation heatmap.
+Cluster 0: Regular Customers
+   Number of Customers : 208
+   Avg Recency         : 16.77 days
+   Avg Frequency       : 21.76 orders
+   Avg Monetary Value  : $12,210.23
+--------------------------------------------------
+Cluster 1: Occasional / Low-Value Customers
+   Number of Customers : 3053
+   Avg Recency         : 44.7 days
+   Avg Frequency       : 3.77 orders
+   Avg Monetary Value  : $1,370.06
+--------------------------------------------------
+Cluster 2: Frequent High-Spenders
+   Number of Customers : 10
+   Avg Recency         : 3.7 days
+   Avg Frequency       : 118.1 orders
+   Avg Monetary Value  : $66,250.55
+--------------------------------------------------
+Cluster 3: VIP / Top-Tier Customers
+   Number of Customers : 3
+   Avg Recency         : 6.0 days
+   Avg Frequency       : 89.67 orders
+   Avg Monetary Value  : $264,703.53
+--------------------------------------------------
+Cluster 4: Churned / Inactive Customers
+   Number of Customers : 1038
+   Avg Recency         : 243.86 days
+   Avg Frequency       : 1.66 orders
+   Avg Monetary Value  : $596.43
+```
